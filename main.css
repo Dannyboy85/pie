@@ -1,3 +1,29 @@
 body{
     background-color: aqua
 }
+header{
+    line-height: 1.2em;
+    border:1px chocolate;
+    flex-direction: column;
+    text-align: center;
+}
+#pies{
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: space-around;
+
+}
+#pies img{
+    width: 200px;
+    
+}
+.card{
+    border: 8px solid burlywood;
+    width: 400px;
+    margin: 20px;
+    display:flex;
+    flex-direction:column;
+    /* justify-content: center; */
+    align-items:center;
+    background-color: rgb(107, 189, 132)
+}
