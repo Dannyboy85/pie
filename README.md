@@ -3,7 +3,7 @@
 Makes an array of pies
 
 ## ScreenShots
-![image of pies]()
+![image of pies](https://raw.githubusercontent.com/Dannyboy85/pie/master/screenshots/screenshot.png)
 
 ## getting started
 ```
