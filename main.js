@@ -10,7 +10,7 @@ const pies = [
     },
     {
         name: "berry pie",
-        ingredients: 'berries',
+        ingredients: 'berries,sugar,dough',
         bakeTemp: 5000,
         drinkteaPairing: 'wine',   
         imageUrl: "https://cdn2.tmbi.com/TOH/Images/Photos/37/1200x1200/exps145896_TH153342B03_13_5b.jpg",
@@ -19,14 +19,30 @@ const pies = [
     },
     {
         name: "lemon pie",
-        ingredients: 'lemon',
+        ingredients: 'lemon,sugar,dough',
         bakeTemp: 5000,
         drinkteaPairing: 'coffe',   
         imageUrl: " http://www.simplyrecipes.com/wp-content/uploads/2016/05/lemon-meringue-pie-horiz-b-1600.jpg",
         instructor: 'Zoe',
         iceCream: "vanilla"
+    }, {
+        name: "lemon pie",
+        ingredients: 'lemon,sugar,dough',
+        bakeTemp: 5000,
+        drinkteaPairing: 'coffe',   
+        imageUrl: " http://www.simplyrecipes.com/wp-content/uploads/2016/05/lemon-meringue-pie-horiz-b-1600.jpg",
+        instructor: 'Saul',
+        iceCream: "vanilla"
     },
-
+    {
+        name: "lemon pie",
+        ingredients: 'lemon,sugar,dough',
+        bakeTemp: 5000,
+        drinkteaPairing: 'coffe',   
+        imageUrl: " http://www.simplyrecipes.com/wp-content/uploads/2016/05/lemon-meringue-pie-horiz-b-1600.jpg",
+        instructor: 'Michael',
+        iceCream: "vanilla"
+    },
    
     
 ];
@@ -36,12 +52,15 @@ const printToDom =(divId, textToprint) => {
 
 }
 
-const pieBuilder = () => {
+const pieBuilder = (monkeybutts) => {
     let domString = '';
-    pies.forEach((pie) => {
+
+    
+    monkeybutts.forEach((pie) => {
         domString += `<div class = "card">`
         domString += `<h2>${pie.name}</h2>`;
         domString += `<h5>${pie.bakeTemp}</h5>`;
+        domString += `<h5>${pie.ingredients}</h5>`;
         domString += `<h5>${pie.drinkteaPairing}</h5>`;
         domString += `<h5>${pie.bakeTemp}</h5>`;
         domString += `<img src = ${pie.imageUrl} >`;
@@ -53,19 +72,48 @@ const pieBuilder = () => {
 
 };
 
-const buttonClick = () => {
+const buttonClick = (e) => {
+    const buttonId = e.target.id;
+    //console.log('You clicked a button',e.target.id);
+    //loop over pies array
+    // if values of instructor key is the same as buttoId we want a key of that object
+    // once we have all the pies for that instructor - call pie builder
     
-    console.log('You clicked a button');
+    const selectedPies = [];
+    pies.forEach((pie) =>  {
+        if (pie.instructor === buttonId) {
+            selectedPies.push(pie);
+        }
+    });
+    if (buttonId === 'All'){
+        pieBuilder(pies);
+    } else {
+         pieBuilder(selectedPies);
+
+   
+
+    }
+    pies.forEach((pie) => {
+        if (pie.instructor === buttonId) {
+            selectedPies.push(pie);
+
+        }
+    });
+    
+    // pieBuilder(selectedPies);
 };
 
 const buttonEvents = () => {
     document.getElementById('Zoe').addEventListener('click', buttonClick);
+    document.getElementById('Saul').addEventListener('click', buttonClick);
+    document.getElementById('Michael').addEventListener('click', buttonClick);
+    document.getElementById('All').addEventListener('click', buttonClick);
     
-    pieBuilder();
+    //pieBuilder();
 };
 
-const init = () =>{
+const init = () => {
     buttonEvents();
-    pieBuilder();
-}
+    pieBuilder(pies);
+};
 init();
